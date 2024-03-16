@@ -8,14 +8,14 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #F9EDED; /* Dark Charcoal */
+        background-color: #f9f9ed; /* Dark Charcoal */
         color: #3F418D; /* Bright Yellow */
     }
     .container {
         max-width: 600px;
         margin: 50px auto;
         padding: 20px;
-        background-color: #F9EDED; /* Dark Charcoal */
+        background-color: #f9f9ed; /* Dark Charcoal */
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
@@ -35,14 +35,14 @@
         margin-bottom: 20px;
         border: 1px solid #3F418D; /* Bright Yellow */
         border-radius: 3px;
-        background-color: #F9EDED; /* Dark Charcoal */
+        background-color: #f9f9ed; /* Dark Charcoal */
         color: #3F418D; /* Bright Yellow */
     }
     button {
         display: block;
         width: 100%;
         padding: 10px;
-        color: #F9EDED; /* Dark Charcoal */
+        color: #f9f9ed; /* Dark Charcoal */
         background-color: #3F418D; /* Bright Yellow */
         border: none;
         border-radius: 3px;
@@ -53,7 +53,7 @@
         background-color: #3F418D; /* Darker Yellow */
     }
     pre {
-        background-color: #F9EDED; /* Dark Charcoal */
+        background-color: #f9f9ed; /* Dark Charcoal */
         padding: 20px;
         border-radius: 3px;
         white-space: pre-wrap;
@@ -64,7 +64,7 @@
         width: 100%;
         padding: 10px;
         margin-top: 20px;
-        color: #F9EDED; /* Dark Charcoal */
+        color: #f9f9ed; /* Dark Charcoal */
         background-color: #3F418D; /* Bright Yellow */
         border: none;
         border-radius: 3px;
