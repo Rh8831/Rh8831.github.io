@@ -3,78 +3,103 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Replace ID in JSON</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <style>
     body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f9f9ed; /* Dark Charcoal */
-        color: #3F418D; /* Bright Yellow */
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
     }
+
     .container {
-        max-width: 600px;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: #f9f9ed; /* Dark Charcoal */
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    h2 {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        max-width: 400px;
+        width: 100%;
         text-align: center;
-        color: #3F418D; /* Bright Yellow */
     }
+
+    h2 {
+        color: #3F418D;
+        margin-bottom: 20px;
+    }
+
     label {
         font-weight: bold;
+        color: #6C757D;
         margin-bottom: 10px;
         display: block;
-        color: #3F418D; /* Bright Yellow */
     }
+
     input[type="text"] {
         width: 100%;
-        padding: 10px;
+        padding: 12px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
         margin-bottom: 20px;
-        border: 1px solid #3F418D; /* Bright Yellow */
-        border-radius: 3px;
-        background-color: #f9f9ed; /* Dark Charcoal */
-        color: #3F418D; /* Bright Yellow */
+        box-sizing: border-box;
     }
+
     button {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        color: #f9f9ed; /* Dark Charcoal */
-        background-color: #3F418D; /* Bright Yellow */
+        background-color: #3F418D;
+        color: #fff;
         border: none;
-        border-radius: 3px;
+        border-radius: 5px;
+        padding: 12px 0;
+        width: 100%;
         cursor: pointer;
+        font-size: 16px;
         transition: background-color 0.3s ease;
     }
+
     button:hover {
-        background-color: #3F418D; /* Darker Yellow */
+        background-color: #30336b;
     }
+
     pre {
-        background-color: #f9f9ed; /* Dark Charcoal */
+        display: none; /* Initially hide */
+        background-color: #f8f9fa;
         padding: 20px;
-        border-radius: 3px;
+        border-radius: 5px;
         white-space: pre-wrap;
-        color: #3F418D; /* Bright Yellow */
-    }
-    .copy-button {
-        display: none;
-        width: 100%;
-        padding: 10px;
+        color: #495057;
+        overflow-x: auto;
         margin-top: 20px;
-        color: #f9f9ed; /* Dark Charcoal */
-        background-color: #3F418D; /* Bright Yellow */
+        text-align: left;
+    }
+
+    .copy-button {
+        display: none; /* Initially hide */
+        background-color: #3F418D;
+        color: #fff;
         border: none;
-        border-radius: 3px;
+        border-radius: 5px;
+        padding: 12px 0;
+        width: 100%;
         cursor: pointer;
+        font-size: 16px;
         transition: background-color 0.3s ease;
+        margin-top: 20px;
     }
+
     .copy-button:hover {
-        background-color: #3F418D; /* Darker Yellow */
+        background-color: #30336b;
     }
-</style><script>
+
+    .copy-icon {
+        margin-right: 10px;
+    }
+</style>
+
+<script>
     function replaceId() {
         var userInput = document.getElementById("idInput").value;
         var id = extractId(userInput);
@@ -254,7 +279,8 @@
             }`);
             
             document.getElementById("output").innerText = JSON.stringify(jsonData, null, 4);
-            document.getElementById("copyButton").style.display = "block";
+            document.getElementById("output").style.display = "block"; // Display the JSON output
+            document.getElementById("copyButton").style.display = "block"; // Display the "Copy JSON" button
         } else {
             alert("Invalid input! Please provide a valid ID.");
         }
@@ -281,10 +307,12 @@
     <div class="container">
         <h2>Replace ID in JSON</h2>
         <label for="idInput">Enter new ID:</label>
-        <input type="text" id="idInput">
+        <input type="text" id="idInput" placeholder="Enter new ID">
         <button onclick="replaceId()">Replace ID</button>
         <pre id="output"></pre>
-        <button id="copyButton" class="copy-button" onclick="copyJson()">Copy JSON</button>
+        <button id="copyButton" class="copy-button" onclick="copyJson()">
+            <i class="fas fa-copy copy-icon"></i>Copy JSON
+        </button>
     </div>
 </body>
 </html>
