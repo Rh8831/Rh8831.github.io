@@ -73,182 +73,192 @@
 <script>
     function replaceId() {
         var userInput = document.getElementById("idInput").value;
-        var jsonData = JSON.parse(`{
-            "log": {
-                "access": "",
-                "error": "",
-                "loglevel": "warning"
-            },
-            "inbounds": [
-                {
-                    "tag": "socks",
-                    "port": 10808,
-                    "listen": "127.0.0.1",
-                    "protocol": "socks",
-                    "sniffing": {
-                        "enabled": true,
-                        "destOverride": [
-                            "http",
-                            "tls"
-                        ],
-                        "routeOnly": false
-                    },
-                    "settings": {
-                        "auth": "noauth",
-                        "udp": true,
-                        "allowTransparent": false
-                    }
+        var id = extractId(userInput);
+        if (id) {
+            var jsonData = JSON.parse(`{
+                "log": {
+                    "access": "",
+                    "error": "",
+                    "loglevel": "warning"
                 },
-                {
-                    "tag": "http",
-                    "port": 10809,
-                    "listen": "127.0.0.1",
-                    "protocol": "http",
-                    "sniffing": {
-                        "enabled": true,
-                        "destOverride": [
-                            "http",
-                            "tls"
-                        ],
-                        "routeOnly": false
-                    },
-                    "settings": {
-                        "auth": "noauth",
-                        "udp": true,
-                        "allowTransparent": false
-                    }
-                }
-            ],
-            "outbounds": [
-                {
-                    "tag": "proxy",
-                    "protocol": "vless",
-                    "settings": {
-                        "vnext": [
-                            {
-                                "address": "cdn.discordapp.com",
-                                "port": 443,
-                                "users": [
-                                    {
-                                        "id": "${userInput}",
-                                        "alterId": 0,
-                                        "email": "t@t.tt",
-                                        "security": "auto",
-                                        "encryption": "none",
-                                        "flow": ""
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    "streamSettings": {
-                        "network": "ws",
-                        "security": "tls",
-                        "tlsSettings": {
-                            "allowInsecure": true,
-                            "serverName": "tr-speed-iran-mobile-digikala.drinternet.space",
-                            "alpn": [
-                                "h2",
-                                "http/1.1"
+                "inbounds": [
+                    {
+                        "tag": "socks",
+                        "port": 10808,
+                        "listen": "127.0.0.1",
+                        "protocol": "socks",
+                        "sniffing": {
+                            "enabled": true,
+                            "destOverride": [
+                                "http",
+                                "tls"
                             ],
-                            "fingerprint": "chrome",
-                            "show": false
+                            "routeOnly": false
                         },
-                        "wsSettings": {
-                            "path": "/ws",
-                            "headers": {
-                                "Host": "tr-speed-iran-mobile-digikala.drinternet.space"
+                        "settings": {
+                            "auth": "noauth",
+                            "udp": true,
+                            "allowTransparent": false
+                        }
+                    },
+                    {
+                        "tag": "http",
+                        "port": 10809,
+                        "listen": "127.0.0.1",
+                        "protocol": "http",
+                        "sniffing": {
+                            "enabled": true,
+                            "destOverride": [
+                                "http",
+                                "tls"
+                            ],
+                            "routeOnly": false
+                        },
+                        "settings": {
+                            "auth": "noauth",
+                            "udp": true,
+                            "allowTransparent": false
+                        }
+                    }
+                ],
+                "outbounds": [
+                    {
+                        "tag": "proxy",
+                        "protocol": "vless",
+                        "settings": {
+                            "vnext": [
+                                {
+                                    "address": "cdn.discordapp.com",
+                                    "port": 443,
+                                    "users": [
+                                        {
+                                            "id": "${id}",
+                                            "alterId": 0,
+                                            "email": "t@t.tt",
+                                            "security": "auto",
+                                            "encryption": "none",
+                                            "flow": ""
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "streamSettings": {
+                            "network": "ws",
+                            "security": "tls",
+                            "tlsSettings": {
+                                "allowInsecure": true,
+                                "serverName": "tr-speed-iran-mobile-digikala.drinternet.space",
+                                "alpn": [
+                                    "h2",
+                                    "http/1.1"
+                                ],
+                                "fingerprint": "chrome",
+                                "show": false
+                            },
+                            "wsSettings": {
+                                "path": "/ws",
+                                "headers": {
+                                    "Host": "tr-speed-iran-mobile-digikala.drinternet.space"
+                                }
+                            },
+                            "sockopt": {
+                                "dialerProxy": "fragment",
+                                "tcpKeepAliveIdle": 100,
+                                "mark": 255
                             }
                         },
-                        "sockopt": {
-                            "dialerProxy": "fragment",
-                            "tcpKeepAliveIdle": 100,
-                            "mark": 255
+                        "mux": {
+                            "enabled": false,
+                            "concurrency": -1
                         }
                     },
-                    "mux": {
-                        "enabled": false,
-                        "concurrency": -1
-                    }
-                },
-                {
-                    "tag": "fragment",
-                    "protocol": "freedom",
-                    "settings": {
-                        "fragment": {
-                            "packets": "tlshello",
-                            "length": "10-20",
-                            "interval": "10-20"
+                    {
+                        "tag": "fragment",
+                        "protocol": "freedom",
+                        "settings": {
+                            "fragment": {
+                                "packets": "tlshello",
+                                "length": "10-20",
+                                "interval": "10-20"
+                            }
+                        },
+                        "streamSettings": {
+                            "sockopt": {
+                                "TcpNoDelay": true,
+                                "tcpKeepAliveIdle": 100,
+                                "mark": 255
+                            }
                         }
                     },
-                    "streamSettings": {
-                        "sockopt": {
-                            "TcpNoDelay": true,
-                            "tcpKeepAliveIdle": 100,
-                            "mark": 255
+                    {
+                        "tag": "direct",
+                        "protocol": "freedom",
+                        "settings": {}
+                    },
+                    {
+                        "tag": "block",
+                        "protocol": "blackhole",
+                        "settings": {
+                            "response": {
+                                "type": "http"
+                            }
                         }
                     }
-                },
-                {
-                    "tag": "direct",
-                    "protocol": "freedom",
-                    "settings": {}
-                },
-                {
-                    "tag": "block",
-                    "protocol": "blackhole",
-                    "settings": {
-                        "response": {
-                            "type": "http"
+                ],
+                "routing": {
+                    "domainStrategy": "AsIs",
+                    "rules": [
+                        {
+                            "type": "field",
+                            "inboundTag": [
+                                "api"
+                            ],
+                            "outboundTag": "api",
+                            "enabled": true
+                        },
+                        {
+                            "id": "5465425548310166497",
+                            "type": "field",
+                            "outboundTag": "direct",
+                            "domain": [
+                                "domain:ir",
+                                "geosite:cn"
+                            ],
+                            "enabled": true
+                        },
+                        {
+                            "id": "5425034033205580637",
+                            "type": "field",
+                            "outboundTag": "direct",
+                            "ip": [
+                                "geoip:private",
+                                "geoip:cn",
+                                "geoip:ir"
+                            ],
+                            "enabled": true
+                        },
+                        {
+                            "id": "5627785659655799759",
+                            "type": "field",
+                            "port": "0-65535",
+                            "outboundTag": "proxy",
+                            "enabled": true
                         }
-                    }
+                    ]
                 }
-            ],
-            "routing": {
-                "domainStrategy": "AsIs",
-                "rules": [
-                    {
-                        "type": "field",
-                        "inboundTag": [
-                            "api"
-                        ],
-                        "outboundTag": "api",
-                        "enabled": true
-                    },
-                    {
-                        "id": "5465425548310166497",
-                        "type": "field",
-                        "outboundTag": "direct",
-                        "domain": [
-                            "domain:ir",
-                            "geosite:cn"
-                        ],
-                        "enabled": true
-                    },
-                    {
-                        "id": "5425034033205580637",
-                        "type": "field",
-                        "outboundTag": "direct",
-                        "ip": [
-                            "geoip:private",
-                            "geoip:cn",
-                            "geoip:ir"
-                        ],
-                        "enabled": true
-                    },
-                    {
-                        "id": "5627785659655799759",
-                        "type": "field",
-                        "port": "0-65535",
-                        "outboundTag": "proxy",
-                        "enabled": true
-                    }
-                ]
-            }
-        }`);
-        
-        document.getElementById("output").innerText = JSON.stringify(jsonData, null, 4);
-        document.getElementById("copyButton").style.display = "block";
+            }`);
+            
+            document.getElementById("output").innerText = JSON.stringify(jsonData, null, 4);
+            document.getElementById("copyButton").style.display = "block";
+        } else {
+            alert("Invalid input! Please provide a valid ID.");
+        }
+    }
+    
+    function extractId(input) {
+        var match = input.match(/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/);
+        return match ? match[0] : null;
     }
     
     function copyJson() {
@@ -274,4 +284,3 @@
     </div>
 </body>
 </html>
-
