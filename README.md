@@ -8,69 +8,73 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f4f4f4;
+        background-color: #F9EDED; /* Dark Charcoal */
+        color: #3F418D; /* Bright Yellow */
     }
     .container {
         max-width: 600px;
         margin: 50px auto;
         padding: 20px;
-        background-color: #fff;
+        background-color: #F9EDED; /* Dark Charcoal */
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     h2 {
         text-align: center;
-        color: #333;
+        color: #3F418D; /* Bright Yellow */
     }
     label {
         font-weight: bold;
         margin-bottom: 10px;
         display: block;
+        color: #3F418D; /* Bright Yellow */
     }
     input[type="text"] {
         width: 100%;
         padding: 10px;
         margin-bottom: 20px;
-        border: 1px solid #ccc;
+        border: 1px solid #3F418D; /* Bright Yellow */
         border-radius: 3px;
+        background-color: #F9EDED; /* Dark Charcoal */
+        color: #3F418D; /* Bright Yellow */
     }
     button {
         display: block;
         width: 100%;
         padding: 10px;
-        color: #fff;
-        background-color: #007bff;
+        color: #F9EDED; /* Dark Charcoal */
+        background-color: #3F418D; /* Bright Yellow */
         border: none;
         border-radius: 3px;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
     button:hover {
-        background-color: #0056b3;
+        background-color: #3F418D; /* Darker Yellow */
     }
     pre {
-        background-color: #f9f9f9;
+        background-color: #F9EDED; /* Dark Charcoal */
         padding: 20px;
         border-radius: 3px;
         white-space: pre-wrap;
+        color: #3F418D; /* Bright Yellow */
     }
     .copy-button {
         display: none;
         width: 100%;
         padding: 10px;
         margin-top: 20px;
-        color: #fff;
-        background-color: #28a745;
+        color: #F9EDED; /* Dark Charcoal */
+        background-color: #3F418D; /* Bright Yellow */
         border: none;
         border-radius: 3px;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
     .copy-button:hover {
-        background-color: #218838;
+        background-color: #3F418D; /* Darker Yellow */
     }
-</style>
-<script>
+</style><script>
     function replaceId() {
         var userInput = document.getElementById("idInput").value;
         var id = extractId(userInput);
