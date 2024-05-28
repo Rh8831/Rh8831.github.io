@@ -101,10 +101,19 @@
 
 <script>
     function replaceId() {
-        var userInput = document.getElementById("idInput").value;
-        var id = extractId(userInput);
+        var idInput = document.getElementById("idInput").value;
+        var packetsInput = document.getElementById("packetsInput").value;
+        var lengthInput = document.getElementById("lengthInput").value;
+        var intervalInput = document.getElementById("intervalInput").value;
+
+        var id = extractId(idInput);
+        var packets = packetsInput || "1-2";
+        var length = lengthInput || "50-100";
+        var interval = intervalInput || "3-5";
+
         if (id) {
             var jsonData = JSON.parse(`{
+                "remarks": "90z944qb (IRCF Fragment)",
                 "log": {
                     "access": "",
                     "error": "",
@@ -158,7 +167,7 @@
                             "vnext": [
                                 {
                                     "address": "cdn.discordapp.com",
-                                    "port": 443,
+                                    "port": 8880,
                                     "users": [
                                         {
                                             "id": "${id}",
@@ -174,49 +183,35 @@
                         },
                         "streamSettings": {
                             "network": "ws",
-                            "security": "tls",
-                            "tlsSettings": {
-                                "allowInsecure": true,
-                                "serverName": "tr-speed-iran-mobile-digikala.drinternet.space",
-                                "alpn": [
-                                    "h2",
-                                    "http/1.1"
-                                ],
-                                "fingerprint": "chrome",
-                                "show": false
-                            },
                             "wsSettings": {
-                                "path": "/ws",
+                                "path": "/asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray?ed=2048",
                                 "headers": {
-                                    "Host": "tr-speed-iran-mobile-digikala.drinternet.space"
+                                    "Host": "2.V2ray.debian.org.fxp.debian.org.speedtest.net.らわなさらわ.drinternet.host"
                                 }
                             },
                             "sockopt": {
                                 "dialerProxy": "fragment",
                                 "tcpKeepAliveIdle": 100,
-                                "mark": 255
+                                "mark": 255,
+                                "tcpNoDelay": true
                             }
-                        },
-                        "mux": {
-                            "enabled": false,
-                            "concurrency": -1
                         }
                     },
                     {
                         "tag": "fragment",
                         "protocol": "freedom",
                         "settings": {
+                            "domainStrategy": "AsIs",
                             "fragment": {
-                                "packets": "tlshello",
-                                "length": "10-20",
-                                "interval": "10-20"
+                                "packets": "${packets}",
+                                "length": "${length}",
+                                "interval": "${interval}"
                             }
                         },
                         "streamSettings": {
                             "sockopt": {
-                                "TcpNoDelay": true,
-                                "tcpKeepAliveIdle": 100,
-                                "mark": 255
+                                "tcpNoDelay": true,
+                                "tcpKeepAliveIdle": 100
                             }
                         }
                     },
@@ -247,27 +242,6 @@
                             "enabled": true
                         },
                         {
-                            "id": "5465425548310166497",
-                            "type": "field",
-                            "outboundTag": "direct",
-                            "domain": [
-                                "domain:ir",
-                                "geosite:cn"
-                            ],
-                            "enabled": true
-                        },
-                        {
-                            "id": "5425034033205580637",
-                            "type": "field",
-                            "outboundTag": "direct",
-                            "ip": [
-                                "geoip:private",
-                                "geoip:cn",
-                                "geoip:ir"
-                            ],
-                            "enabled": true
-                        },
-                        {
                             "id": "5627785659655799759",
                             "type": "field",
                             "port": "0-65535",
@@ -282,7 +256,7 @@
             document.getElementById("output").style.display = "block"; // Display the JSON output
             document.getElementById("copyButton").style.display = "block"; // Display the "Copy JSON" button
         } else {
-            alert("Invalid input! Please provide a valid ID.");
+            alert("Invalid ID input! Please provide a valid ID.");
         }
     }
     
@@ -308,6 +282,13 @@
         <h2>Replace ID in JSON</h2>
         <label for="idInput">Enter new ID:</label>
         <input type="text" id="idInput" placeholder="Enter new ID">
+        <label for="packetsInput">Enter new packets:</label>
+        <input type="text" id="packetsInput" placeholder="Enter new packets (optional)">
+        <label for="lengthInput">Enter new length
+:</label>
+        <input type="text" id="lengthInput" placeholder="Enter new length (optional)">
+        <label for="intervalInput">Enter new interval:</label>
+        <input type="text" id="intervalInput" placeholder="Enter new interval (optional)">
         <button onclick="replaceId()">Replace ID</button>
         <pre id="output"></pre>
         <button id="copyButton" class="copy-button" onclick="copyJson()">
