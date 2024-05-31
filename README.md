@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -10,7 +11,7 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f8f9fa;
+        background-color: #e3f2fd;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -25,10 +26,16 @@
         max-width: 400px;
         width: 100%;
         text-align: center;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 
     h2 {
-        color: #3F418D;
+        color: #00796b;
         margin-bottom: 20px;
     }
 
@@ -46,10 +53,47 @@
         border-radius: 5px;
         margin-bottom: 20px;
         box-sizing: border-box;
+        transition: border-color 0.3s ease;
     }
 
-    button {
-        background-color: #3F418D;
+    input[type="text"]:focus {
+        border-color: #00796b;
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .button-group button {
+        background-color: #00796b;
+        color: #fff;
+        border: 2px solid transparent;
+        border-radius: 5px;
+        padding: 12px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+        width: 30%;
+    }
+
+    .button-group button:hover {
+        background-color: #004d40;
+        transform: scale(1.05);
+    }
+
+    .button-group button:active {
+        background-color: #00796b;
+        transform: scale(1);
+    }
+
+    .button-group button.selected {
+        background-color: #851355;
+    }
+
+    button.replace-btn {
+        background-color: #00796b;
         color: #fff;
         border: none;
         border-radius: 5px;
@@ -60,8 +104,8 @@
         transition: background-color 0.3s ease;
     }
 
-    button:hover {
-        background-color: #30336b;
+    button.replace-btn:hover {
+        background-color: #004d40;
     }
 
     pre {
@@ -78,7 +122,7 @@
 
     .copy-button {
         display: none; /* Initially hide */
-        background-color: #3F418D;
+        background-color: #00796b;
         color: #fff;
         border: none;
         border-radius: 5px;
@@ -91,7 +135,7 @@
     }
 
     .copy-button:hover {
-        background-color: #30336b;
+        background-color: #004d40;
     }
 
     .copy-icon {
@@ -100,16 +144,40 @@
 </style>
 
 <script>
+    var packets = "1-2";
+    var length = "50-100";
+    var interval = "3-5";
+
+    function setWifiValues() {
+        packets = "1-3";
+        length = "50-100";
+        interval = "3-5";
+        highlightButton('wifi');
+    }
+
+    function setMciValues() {
+        packets = "1-2";
+        length = "20-50";
+        interval = "10-15";
+        highlightButton('mci');
+    }
+
+    function setMtnValues() {
+        packets = "1-5";
+        length = "100-150";
+        interval = "10-15";
+        highlightButton('mtn');
+    }
+
+    function highlightButton(buttonId) {
+        var buttons = document.querySelectorAll('.button-group button');
+        buttons.forEach(button => button.classList.remove('selected'));
+        document.getElementById(buttonId).classList.add('selected');
+    }
+
     function replaceId() {
         var idInput = document.getElementById("idInput").value;
-        var packetsInput = document.getElementById("packetsInput").value;
-        var lengthInput = document.getElementById("lengthInput").value;
-        var intervalInput = document.getElementById("intervalInput").value;
-
         var id = extractId(idInput);
-        var packets = packetsInput || "1-2";
-        var length = lengthInput || "50-100";
-        var interval = intervalInput || "3-5";
 
         if (id) {
             var jsonData = JSON.parse(`{
@@ -251,7 +319,7 @@
                     ]
                 }
             }`);
-            
+
             document.getElementById("output").innerText = JSON.stringify(jsonData, null, 4);
             document.getElementById("output").style.display = "block"; // Display the JSON output
             document.getElementById("copyButton").style.display = "block"; // Display the "Copy JSON" button
@@ -282,14 +350,12 @@
         <h2>Replace ID in JSON</h2>
         <label for="idInput">Enter new ID:</label>
         <input type="text" id="idInput" placeholder="Enter new ID">
-        <label for="packetsInput">Enter new packets:</label>
-        <input type="text" id="packetsInput" placeholder="Enter new packets (optional)">
-        <label for="lengthInput">Enter new length
-:</label>
-        <input type="text" id="lengthInput" placeholder="Enter new length (optional)">
-        <label for="intervalInput">Enter new interval:</label>
-        <input type="text" id="intervalInput" placeholder="Enter new interval (optional)">
-        <button onclick="replaceId()">Replace ID</button>
+        <div class="button-group">
+            <button id="wifi" onclick="setWifiValues()">Wifi</button>
+            <button id="mci" onclick="setMciValues()">MCI</button>
+            <button id="mtn" onclick="setMtnValues()">MTN</button>
+        </div>
+        <button class="replace-btn" onclick="replaceId()">Replace ID</button>
         <pre id="output"></pre>
         <button id="copyButton" class="copy-button" onclick="copyJson()">
             <i class="fas fa-copy copy-icon"></i>Copy JSON
