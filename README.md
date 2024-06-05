@@ -233,7 +233,7 @@
                         "settings": {
                             "vnext": [
                                 {
-                                    "address": "cdn.discordapp.com",
+                                    "address": "canva.com",
                                     "port": 8880,
                                     "users": [
                                         {
