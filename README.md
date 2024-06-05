@@ -149,22 +149,22 @@
 
     function setWifiValues() {
         packets = "1-3";
-        length = "50-100";
-        interval = "3-5";
+        length = "85-100";
+        interval = "1-1";
         highlightButton('wifi');
     }
 
     function setMciValues() {
-        packets = "1-2";
-        length = "20-50";
-        interval = "10-15";
+        packets = "1-3";
+        length = "85-100";
+        interval = "1-1";
         highlightButton('mci');
     }
 
     function setMtnValues() {
-        packets = "1-5";
-        length = "100-150";
-        interval = "10-15";
+        packets = "1-3";
+        length = "85-100";
+        interval = "1-1";
         highlightButton('mtn');
     }
 
@@ -251,9 +251,9 @@
                         "streamSettings": {
                             "network": "ws",
                             "wsSettings": {
-                                "path": "/asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray,asrnovin-ArV2ray?ed=2048",
+                                "path": "/asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,wp-admin?ed=2560",
                                 "headers": {
-                                    "Host": "2.V2ray.debian.org.fxp.debian.org.speedtest.net.らわなさらわ.drinternet.host"
+                                    "Host": "2.debian.org.fxp.debian.org.speedtest.net.qwrtyuiopasdfghjklzxcvbnmqwrtyuiapasdfghjklzxcvbddnmqwrtyasdfgh.cfd"
                                 }
                             },
                             "sockopt": {
