@@ -143,26 +143,26 @@
 </style>
 
 <script>
-    var packets = "1-2";
+     var packets = "1-2";
     var length = "50-100";
-    var interval = "3-5";
+    var interval ="3-5";
 
     function setWifiValues() {
-        packets = "1-3";
+        packets = "1-5";
         length = "85-100";
         interval = "1-1";
         highlightButton('wifi');
     }
 
     function setMciValues() {
-        packets = "1-3";
+        packets = "1-5";
         length = "85-100";
         interval = "1-1";
         highlightButton('mci');
     }
 
     function setMtnValues() {
-        packets = "1-3";
+        packets = "1-5";
         length = "85-100";
         interval = "1-1";
         highlightButton('mtn');
