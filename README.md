@@ -251,7 +251,7 @@
                         "streamSettings": {
                             "network": "ws",
                             "wsSettings": {
-                                "path": "/asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,wp-admin?ed=2560",
+                                "path": "/asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,asrnovin-Speed,wp-admin?ed=2048",
                                 "headers": {
                                     "Host": "2.debian.org.fxp.debian.org.speedtest.net.qwrtyuiopasdfghjklzxcvbnmqwrtyuiapasdfghjklzxcvbddnmqwrtyasdfgh.cfd"
                                 }
